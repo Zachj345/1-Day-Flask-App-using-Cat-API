@@ -17,6 +17,9 @@
       crossorigin="anonymous"
     />
     <style>
+      body {
+        background-color: rgb(198, 190, 221);
+      }
       .title {
         margin: 6%;
         padding: 3%;
@@ -28,14 +31,38 @@
         display: flex;
         justify-content: center;
       }
+      .info-card {
+        margin: 5%;
+      }
     </style>
   </head>
   <body>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <a href="{{url_for('index')}}" class="navbar-brand">Home</a>
+      </div>
+    </nav>
+    <br />
     <h1 class="title">Hey welcome to use the Cat API</h1>
     <br />
     <br />
 
-    <div class="info"></div>
+    <div class="info">
+      {% for i in data['breeds'] %}
+      <div class="card info-card" style="width: 18rem">
+        <img
+          src="{{i['url']}}"
+          class="card-img-top"
+          alt="no image available for this cat"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{i['name']}}</h5>
+          <p class="card-text">i['description']</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

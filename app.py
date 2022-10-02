@@ -13,8 +13,17 @@ API_KEY = 'live_slwstxVNRlpVUWvVsYjBRMYCCyHR511ixrffrbKmjmLULEYgKNwe9xsGhH4NhqIh
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/home', methods=['GET', 'POST'])
 def index():
-
-    return render_template('index.html')
+    url = 'https://api.thecatapi.com/v1/images/search'
+    params = {
+        'limit': 3,
+        'api_key': API_KEY,
+        'has_breeds': 1
+    }
+    response = requests.get(url, params=params)
+    print(response.reason)
+    data = response.json()
+    print(data)
+    return render_template('index.html', data=data)
 
 
 if __name__ == '__main__':
