@@ -15,15 +15,13 @@ API_KEY = 'live_slwstxVNRlpVUWvVsYjBRMYCCyHR511ixrffrbKmjmLULEYgKNwe9xsGhH4NhqIh
 def index():
     url = 'https://api.thecatapi.com/v1/images/search'
     params = {
-        'limit': 1,
+        'limit': 5,
         'api_key': API_KEY,
         'has_breeds': 1
     }
     response = requests.get(url, params=params)
     print(response.reason)
     data = response.json()
-    # for i in data:
-    #     print(i['breeds'][0]['name'])
     return render_template('index.html', data=data)
 
 
