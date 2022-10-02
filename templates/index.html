@@ -21,7 +21,7 @@
         background-color: rgb(198, 190, 221);
       }
       .title {
-        margin: 6%;
+        margin: 3%;
         padding: 3%;
         text-align: center;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -29,10 +29,13 @@
       .info {
         margin: auto;
         display: flex;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
       }
       .info-card {
-        margin: 5%;
+        margin: 0 5% 5% 5%;
+        width: 50vw;
       }
     </style>
   </head>
@@ -43,22 +46,21 @@
       </div>
     </nav>
     <br />
-    <h1 class="title">Hey welcome to use the Cat API</h1>
-    <br />
-    <br />
+    <h1 class="title">Hey welcome to use of the Cat API</h1>
 
     <div class="info">
-      {% for i in data['breeds'] %}
-      <div class="card info-card" style="width: 18rem">
+      <h3 class="title">Check out the cat of the day</h3>
+      {% for cat in data %}
+      <div class="card info-card">
         <img
-          src="{{i['url']}}"
+          src="{{cat['url']}}"
           class="card-img-top"
           alt="no image available for this cat"
         />
         <div class="card-body">
-          <h5 class="card-title">{{i['name']}}</h5>
-          <p class="card-text">i['description']</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h5 class="card-title">{{ cat['breeds'][0]['name'] }}</h5>
+          <p class="card-text">{{ cat['breeds'][0]['description'] }}</p>
+          <a href="{{cat['url']}}" class="btn btn-primary">View Image</a>
         </div>
       </div>
       {% endfor %}
