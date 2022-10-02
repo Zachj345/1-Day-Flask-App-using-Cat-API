@@ -1,7 +1,6 @@
 import requests
 from flask import Flask
-from flask import render_template, request, flash, jsonify, redirect, url_for
-import hashlib
+from flask import render_template
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
