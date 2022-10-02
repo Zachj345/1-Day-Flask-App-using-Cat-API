@@ -19,7 +19,6 @@ def index():
         'has_breeds': 1
     }
     response = requests.get(url, params=params)
-    print(response.reason)
     data = response.json()
     return render_template('index.html', data=data)
 
