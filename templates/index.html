@@ -17,10 +17,20 @@
       crossorigin="anonymous"
     />
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
       body {
         background-color: rgb(198, 190, 221);
       }
       .title {
+        margin: 3%;
+        padding: 3%;
+        text-align: center;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      .under-title {
         margin: 3%;
         padding: 3%;
         text-align: center;
@@ -33,12 +43,12 @@
         justify-content: center;
         align-items: center;
       }
+
       .info-card {
-        margin: 0 5% 5% 5%;
+        margin: 5% auto;
         width: 50vw;
       }
       .pagination {
-        text-align: center;
         margin: auto;
         width: 40%;
       }
@@ -50,6 +60,18 @@
       .more {
         height: 20%;
         width: 40%;
+      }
+      @media (min-width: 0px) and (max-width: 756px) {
+        .info-card {
+          width: 82%;
+        }
+        .title {
+          font-size: 1.6rem;
+        }
+        .under-title {
+          font-size: 1.4rem;
+          padding: 2% 5%;
+        }
       }
     </style>
   </head>
@@ -63,25 +85,29 @@
     <h1 class="title">Hey welcome to use of the Cat API</h1>
 
     <div class="info">
-      <h3 class="title">Check out the cat of the day</h3>
-      {% for cat in data %}
-      <div class="card info-card">
-        <img
-          src="{{cat['url']}}"
-          class="card-img-top"
-          alt="no image available for this cat"
-        />
-        <div class="card-body">
-          <h5 class="card-title">{{ cat['breeds'][0]['name'] }}</h5>
-          <p class="card-text">{{ cat['breeds'][0]['description'] }}</p>
-          <a href="{{cat['url']}}" class="btn btn-primary">View Image</a>
+      <h3 class="under-title">Check out the cat of the day</h3>
+      <div class="reload">
+        {% for cat in data %}
+        <div class="card info-card">
+          <img
+            src="{{cat['url']}}"
+            class="card-img-top"
+            alt="no image available for this cat"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ cat['breeds'][0]['name'] }}</h5>
+            <p class="card-text">{{ cat['breeds'][0]['description'] }}</p>
+            <a href="{{cat['url']}}" class="btn btn-primary">View Image</a>
+          </div>
         </div>
+        {% endfor %}
       </div>
-      {% endfor %}
     </div>
     <div class="pagnation">
       <div class="more-btns">
-        <button class="btn btn-secondary more">More!</button>
+        <button class="btn btn-secondary more" onclick="return more()">
+          More!
+        </button>
       </div>
     </div>
     <br />
