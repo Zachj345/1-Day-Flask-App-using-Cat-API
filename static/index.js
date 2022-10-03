@@ -1,4 +1,4 @@
-function more() {
+function moreCats() {
   const API_KEY =
     "live_slwstxVNRlpVUWvVsYjBRMYCCyHR511ixrffrbKmjmLULEYgKNwe9xsGhH4NhqIh";
 
